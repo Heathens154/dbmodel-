@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Ítems{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('create') }}">Crear Nuevo Ítem</a>
+<ul>
+    {% for item in items %}
+    <li>
+        <strong>{{ item.name }}</strong>: {{ item.description }} (Cantidad: {{ item.quantity }})
+        <a href="{{ url_for('update', id=item.id) }}">Editar</a>
+        <a href="{{ url_for('delete', id=item.id) }}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
